@@ -1,0 +1,13 @@
+Bootstrap: localimage
+From: ./ipl.sif
+
+%post
+  chmod 777 /opt/datasets/
+  cd /opt/datasets/
+  gdown --id 1DdNsoPv6fCE-nhlK68ceVG3RFo28tk4W
+  unzip cub200.zip
+  rm cub200.zip
+
+%runscript
+  cd ~/interactive_prototypes_x/src/experiments
+  python experiments_main.py --dataset "/opt/datasets/cub200/images/" $@
